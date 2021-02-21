@@ -79,6 +79,23 @@ def pwd():
     location=os.getcwd()
     os.write(1, (location).encode())
     
+def checkPipe(command):
+    global pipe
+    global args1
+    global args2
+    while(i<len(command) and !pipe):
+        if(command[i]=="|"):
+            pipe = True
+            args1 = getArgs(0,i-1,command)
+            args2 = getArgs(i+1,len(command)-1,command)
+        else:
+            i+=1
+def getArgs(first,last,command):
+agrs = []
+    while(first<last):
+        args=args+command[first]
+        first+=1
+        
 def checkReDirect(command):
     global inFile
     global outFile
@@ -95,8 +112,8 @@ def checkReDirect(command):
         elif(i=="<"):
             reDirI=True;
             inFile=i+1
+          
 
-            
 def reDirectInput():
     global inFile
     os.close(0)                 # redirect child's stdout
