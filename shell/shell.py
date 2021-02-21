@@ -14,7 +14,8 @@ reDirI=False
 reDirO=False
 inFile=""
 outFile=""
-
+agrs1=[]
+args2=[]
 
 
 def getChar():
@@ -92,9 +93,10 @@ def checkPipe(command):
             i+=1
 def getArgs(first,last,command):
 agrs = []
-    while(first<last):
-        args=args+command[first]
-        first+=1
+while(first<last):
+    args=args+command[first]
+    first+=1
+return args
         
 def checkReDirect(command):
     global inFile
